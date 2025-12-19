@@ -26,7 +26,62 @@
     
 <div class="header-right"></div>
 </header>
-
+<div class="pixel-window">
+        <div class="pixel-header">
+            <div class="pixel-title">◼ SKILLS.EXE</div>
+            <div class="pixel-controls">
+                <span class="pixel-btn close">✕</span>
+                <span class="pixel-btn minimize">–</span>
+               
+            </div>
+        </div>
+        
+        <div class="pixel-content">
+            <div class="pixel-section">
+                <h2 class="pixel-heading">▶ LANGUAGES:</h2>
+                
+                <div class="pixel-line">
+                    <span class="pixel-label">▷ Studying:tailwind css/react js/kotlin</span> 
+                    <span class="pixel-text"></span>
+                </div>
+                
+                <div class="pixel-line">
+                    <span class="pixel-text">▷ i use: python/java/html/css/php</span>
+                </div>
+            </div>
+            
+            <div class="pixel-section">
+                <h2 class="pixel-heading">▶ Softwares:</h2>
+                <div class="pixel-list">
+                    <div class="pixel-list-item">
+                        <span class="pixel-text">▷ Godot</span>
+                    </div>
+                    <div class="pixel-list-item">
+                        <span class="pixel-text">▷ Pycharm</span>
+                    </div>
+                    <div class="pixel-list-item">
+                        <span class="pixel-text">▷ intellij</span>
+                    </div>
+                    <div class="pixel-list-item">
+                        <span class="pixel-text">▷ Visual Studio Code</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pixel-section">
+                <h2 class="pixel-heading">▶ Technologies :</h2>
+                <div class="pixel-list">
+                    <div class="pixel-list-item">▷ Git, GitHub</div>
+                    <div class="pixel-list-item">▷ Pygame</div>
+                    <div class="pixel-list-item">▷ MySQL</div>
+                    <div class="pixel-list-item">▷ Godot</div>
+                    <div class="pixel-list-item">▷ Linux(cachyos,mint),Windows</div>
+                    <div class="pixel-list-item">▷ Android Studio</div>
+                    <div class="pixel-list-item">▷ and more...</div>
+                </div>
+            </div>
+        </div>
+    </div>
       
 
     
@@ -40,3 +95,39 @@
         </div>
     </footer>
 </html>
+
+<script>
+
+document.querySelectorAll('.pixel-header').forEach(header => {
+    header.addEventListener('mousedown', function(e) {
+        const window = this.parentElement;
+        let shiftX = e.clientX - window.getBoundingClientRect().left;
+        let shiftY = e.clientY - window.getBoundingClientRect().top;
+        
+        window.style.position = 'absolute';
+        window.style.zIndex = 1000;
+        
+        function moveAt(pageX, pageY) {
+            window.style.left = pageX - shiftX + 'px';
+            window.style.top = pageY - shiftY + 'px';
+        }
+        
+        function onMouseMove(event) {
+            moveAt(event.pageX, event.pageY);
+        }
+        
+        moveAt(e.pageX, e.pageY);
+        
+        document.addEventListener('mousemove', onMouseMove);
+        
+        document.onmouseup = function() {
+            document.removeEventListener('mousemove', onMouseMove);
+            document.onmouseup = null;
+        };
+    });
+    
+    header.ondragstart = function() {
+        return false;
+    };
+});
+</script>
