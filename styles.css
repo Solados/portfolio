@@ -40,20 +40,28 @@ header {
     align-items: center;
 }
 
-.logo {
+.logo h1 {
    justify-self: start;
+   transition: all 0.3s;
 }
-
-.logo img {
-    height: 100px;
-    width: auto;
-    transition: transform 0.3s ease;
+.logo h1:hover {
+    color: #f0e6ff;
+    cursor: pointer;
 }
-
-.logo img:hover {
-    transform: scale(1.05);
+.logo h1::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;        
+    width: 0;
+    height: 2px;
+    background-color: #f0e6ff;
+    transition: width 0.3s;
 }
+logo :hover::after {
+    width: 100%;
 
+}
 
 /* Navigation Links - Centered */
 .nav-links {
